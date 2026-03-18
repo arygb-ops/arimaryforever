@@ -433,11 +433,12 @@
             background: rgba(255, 255, 255, 0.75);
             padding: 16px;
             border-radius: 16px;
+            overflow: hidden;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             will-change: transform, opacity;
         }
 
@@ -449,13 +450,19 @@
         .photo-item:nth-child(2) { margin-top: 20px; }
         .photo-item:nth-child(3) { margin-top: 8px; }
 
-        .photo-item:hover {
-            transform: translateY(-5px) scale(1.04);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.16);
-        }
+        /* Depth variation: slightly smaller for some cards */
+        .photo-item:nth-child(3n+1).revealed { transform: scale(0.95); }
+        .photo-item:nth-child(3n+2).revealed { transform: scale(1); }
+        .photo-item:nth-child(3n).revealed   { transform: scale(0.95); }
 
-        .photo-item.revealed:hover {
-            transform: translateY(-5px) scale(1.04);
+        /* Hover always scales to 1.05 regardless of depth variant */
+        .photo-item:hover,
+        .photo-item.revealed:hover,
+        .photo-item:nth-child(3n+1).revealed:hover,
+        .photo-item:nth-child(3n+2).revealed:hover,
+        .photo-item:nth-child(3n).revealed:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
         }
 
         body.dark-mode .photo-item {
