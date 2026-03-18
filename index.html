@@ -401,33 +401,56 @@
         /* Photo Gallery */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
             margin-top: 30px;
+            align-items: start;
         }
 
         .photo-item {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.75);
+            padding: 16px;
+            border-radius: 16px;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            will-change: transform, opacity;
+        }
+
+        .photo-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .photo-item:nth-child(2) { margin-top: 20px; }
+        .photo-item:nth-child(3) { margin-top: 8px; }
+
+        .photo-item:hover {
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.16);
+        }
+
+        .photo-item.revealed:hover {
+            transform: translateY(-5px) scale(1.04);
         }
 
         body.dark-mode .photo-item {
-            background: #1a3a52;
+            background: rgba(26, 58, 82, 0.85);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
         }
 
-        .photo-item:hover {
-            transform: translateY(-5px);
+        .gallery-img {
+            border-radius: 14px;
+            transition: transform 0.4s ease;
         }
 
         .photo-placeholder {
             width: 100%;
             height: 250px;
             background: linear-gradient(135deg, #ffeef8 0%, #e3f2fd 100%);
-            border-radius: 8px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -440,10 +463,23 @@
             font-style: italic;
             font-size: 1.05em;
             line-height: 1.6;
+            margin-top: 8px;
         }
 
         body.dark-mode .photo-caption {
             color: #ccc;
+        }
+
+        /* Date / location group titles */
+        .photo-date-label {
+            text-align: center;
+            margin-top: 48px;
+            margin-bottom: 20px;
+            font-size: 1.12em;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--text-color);
+            opacity: 0.88;
         }
 
         /* Instagram Story Styles */
@@ -3028,33 +3064,33 @@ Səninlə olanda hər şey daha asan görünürdü. Elə bil həyatın bütün �
                 <div id="supabaseGallery"></div>
 
                 <!-- Existing static photos -->
-                <p style="text-align: center; margin-bottom: 30px; color: var(--text-color);">16 fevral 2026</p>
+                <p class="photo-date-label">16 fevral 2026</p>
                 <div class="photo-grid">
                     <div class="photo-item">
-                        <img src="images/photo/14feb1.jpg" alt="Memory 1" class="gallery-img" style="width: 100%; height: 250px; border-radius: 8px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                        <img src="images/photo/14feb1.jpg" alt="Memory 1" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
                         <p class="photo-caption">"Sənin bu gülüşünə görə hərşeyi edərəm, sevirəm səni."</p>
                     </div>
                     <div class="photo-item">
-                        <img src="images/photo/14feb2.jpg" alt="Memory 2" class="gallery-img" style="width: 100%; height: 250px; border-radius: 8px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                        <img src="images/photo/14feb2.jpg" alt="Memory 2" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
                         <p class="photo-caption">"İçəridə o qədər baxmalı şeylər var idi ki, şəkil çəkmək yadımıza düşmədi. Yaxşı ki, bunu çəkmişik."
                         </p>
                     </div>
                     <div class="photo-item">
-                        <img src="images/photo/14feb3.jpg" alt="Memory 3" class="gallery-img" style="width: 100%; height: 250px; border-radius: 8px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                        <img src="images/photo/14feb3.jpg" alt="Memory 3" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
                         <p class="photo-caption">"Planşet yaxşıdır, kamera da pis deyil... Amma sevgilim idealdır."</p>
                     </div>
                 </div>
 
-                <p style="text-align: center; margin-top: 40px; margin-bottom: 30px; color: var(--text-color);">07 mart 2026</p>
+                <p class="photo-date-label">07 mart 2026</p>
                 <div class="photo-grid">
                     <div class="photo-item">
-                        <img src="images/photo/2026-03-07-Xezerbaliqevi-1.jpg" alt="Xəzər Balıqevi 1" class="gallery-img" style="width: 100%; height: 250px; border-radius: 8px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                        <img src="images/photo/2026-03-07-Xezerbaliqevi-1.jpg" alt="Xəzər Balıqevi 1" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
                     </div>
                     <div class="photo-item">
-                        <img src="images/photo/2026-03-07-Xezerbaliqevi-2.jpg" alt="Xəzər Balıqevi 2" class="gallery-img" style="width: 100%; height: 250px; border-radius: 8px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                        <img src="images/photo/2026-03-07-Xezerbaliqevi-2.jpg" alt="Xəzər Balıqevi 2" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
                     </div>
                     <div class="photo-item">
-                        <img src="images/photo/2026-03-07-Xezerbaliqevi-3.jpg" alt="Xəzər Balıqevi 3" class="gallery-img" style="width: 100%; height: 250px; border-radius: 8px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                        <img src="images/photo/2026-03-07-Xezerbaliqevi-3.jpg" alt="Xəzər Balıqevi 3" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
                     </div>
                 </div>
 
@@ -5429,6 +5465,39 @@ Səninlə olanda hər şey daha asan görünürdü. Elə bil həyatın bütün �
                 swiping = false;
             });
         })();
+
+        // ── Photo gallery scroll-reveal ───────────────────────────────────────
+        (function () {
+            var STAGGER_DELAY_MS = 80;
+            var observedItems = new WeakSet();
+
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        var item = entry.target;
+                        var siblings = item.parentNode ? Array.from(item.parentNode.children) : [];
+                        var idx = siblings.indexOf(item);
+                        item.style.transitionDelay = Math.max(idx * STAGGER_DELAY_MS, 0) + 'ms';
+                        item.classList.add('revealed');
+                        observer.unobserve(item);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -10px 0px' });
+
+            function observePhotoItems() {
+                document.querySelectorAll('.photo-item').forEach(function (item) {
+                    if (!observedItems.has(item)) {
+                        observedItems.add(item);
+                        observer.observe(item);
+                    }
+                });
+            }
+
+            // Observe items already in the DOM
+            observePhotoItems();
+            // Expose globally so dynamic additions (Supabase) can trigger it
+            window.observePhotoItems = observePhotoItems;
+        })();
     </script>
     <script>
         // ── Supabase photo gallery ───────────────────────────────────────────
@@ -5480,6 +5549,8 @@ Səninlə olanda hər şey daha asan görünürdü. Elə bil həyatın bütün �
                         });
                     }
                 });
+                // Trigger scroll-reveal for any newly added photo-item elements
+                if (window.observePhotoItems) window.observePhotoItems();
             }
 
             // Find or create a date group inside #supabaseGallery
@@ -5491,7 +5562,7 @@ Səninlə olanda hər şey daha asan görünürdü. Elə bil həyatın bütün �
                 if (existing) return existing;
 
                 var label = document.createElement("p");
-                label.setAttribute("style", "text-align: center; margin-top: 40px; margin-bottom: 30px; color: var(--text-color);");
+                label.className = "photo-date-label";
                 var labelText = formatDateLabel(dateStr);
                 if (loc) labelText += " \u2014 " + loc;
                 label.textContent = labelText;
@@ -5515,7 +5586,7 @@ Səninlə olanda hər şey daha asan görünürdü. Elə bil həyatın bütün �
                 img.src = imageUrl;
                 img.alt = formatDateLabel(dateStr);
                 img.className = "gallery-img";
-                img.style.cssText = "width:100%;height:250px;border-radius:8px;object-fit:contain;margin-bottom:15px;cursor:pointer;";
+                img.style.cssText = "width:100%;height:250px;border-radius:14px;object-fit:contain;margin-bottom:15px;cursor:pointer;";
 
                 item.appendChild(img);
                 grid.appendChild(item);
