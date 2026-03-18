@@ -580,7 +580,6 @@
             border-radius: 14px;
             transition: transform 0.4s ease;
             margin-bottom: 10px;
-            cursor: pointer;
         }
 
         .photo-item:hover .gallery-img {
@@ -656,7 +655,7 @@
             color: #ccc;
         }
 
-        /* Date / location group titles (kept for legacy compatibility) */
+        /* Date / location group titles */
         .photo-date-label {
             text-align: center;
             margin-top: 48px;
@@ -666,217 +665,6 @@
             letter-spacing: 0.4px;
             color: var(--text-color);
             opacity: 0.88;
-        }
-
-        /* ── Memory Timeline ─────────────────────────────────────────────── */
-        .memory-timeline {
-            position: relative;
-            padding: 20px 0 40px;
-        }
-
-        /* Vertical spine */
-        .memory-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg,
-                rgba(233, 30, 99, 0.8) 0%,
-                rgba(233, 30, 99, 0.4) 100%);
-            box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
-            border-radius: 2px;
-        }
-
-        /* Each timeline entry */
-        .timeline-entry {
-            position: relative;
-            margin-bottom: 60px;
-            display: flex;
-            align-items: flex-start;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: timelineEntryIn 0.7s ease forwards;
-        }
-
-        .timeline-entry:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-entry:nth-child(2) { animation-delay: 0.3s; }
-        .timeline-entry:nth-child(3) { animation-delay: 0.5s; }
-        .timeline-entry:nth-child(4) { animation-delay: 0.7s; }
-        .timeline-entry:nth-child(5) { animation-delay: 0.9s; }
-
-        @keyframes timelineEntryIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Circular marker dot on the spine */
-        .timeline-marker {
-            position: absolute;
-            left: 50%;
-            top: 18px;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #e91e63, #f06292);
-            border: 4px solid rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            z-index: 10;
-            box-shadow: 0 0 30px rgba(233, 30, 99, 0.6);
-            animation: markerPulse 2s infinite;
-            flex-shrink: 0;
-        }
-
-        @keyframes markerPulse {
-            0%, 100% { box-shadow: 0 0 30px rgba(233, 30, 99, 0.6); }
-            50%       { box-shadow: 0 0 50px rgba(233, 30, 99, 0.9); }
-        }
-
-        /* Content boxes */
-        .timeline-content {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-            width: 44%;
-            position: relative;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(233, 30, 99, 0.3);
-            border-color: rgba(233, 30, 99, 0.3);
-        }
-
-        /* Odd entries on the left */
-        .timeline-entry:nth-child(odd) .timeline-content {
-            margin-left: 0;
-            margin-right: auto;
-            text-align: right;
-        }
-
-        /* Even entries on the right */
-        .timeline-entry:nth-child(even) .timeline-content {
-            margin-left: auto;
-            margin-right: 0;
-            text-align: left;
-        }
-
-        /* Connector lines: odd (left box) points right toward spine */
-        .timeline-entry:nth-child(odd) .timeline-content::after {
-            content: '';
-            position: absolute;
-            top: 24px;
-            right: -32px;
-            width: 32px;
-            height: 2px;
-            background: rgba(233, 30, 99, 0.5);
-        }
-
-        /* Connector lines: even (right box) points left toward spine */
-        .timeline-entry:nth-child(even) .timeline-content::after {
-            content: '';
-            position: absolute;
-            top: 24px;
-            left: -32px;
-            width: 32px;
-            height: 2px;
-            background: rgba(233, 30, 99, 0.5);
-        }
-
-        /* Timeline date header */
-        .timeline-date {
-            font-size: 1.3em;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #f8bbd9;
-            margin: 0 0 6px 0;
-        }
-
-        /* Optional description */
-        .timeline-description {
-            font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.6);
-            margin: 0 0 8px 0;
-            font-style: italic;
-        }
-
-        /* Photo count badge */
-        .timeline-photo-count {
-            display: inline-block;
-            background: rgba(233, 30, 99, 0.2);
-            border: 1px solid rgba(233, 30, 99, 0.4);
-            color: #f06292;
-            font-size: 0.78em;
-            font-weight: 600;
-            padding: 2px 10px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-        }
-
-        /* ── Responsive: tablet ──────────────────────────────────────────── */
-        @media (max-width: 900px) {
-            .memory-timeline::before {
-                left: 20px;
-                transform: none;
-            }
-
-            .timeline-marker {
-                left: 20px;
-                transform: translateX(-50%);
-            }
-
-            .timeline-content {
-                width: calc(100% - 54px);
-                margin-left: 54px !important;
-                margin-right: 0 !important;
-                text-align: left !important;
-            }
-
-            .timeline-entry:nth-child(odd) .timeline-content::after,
-            .timeline-entry:nth-child(even) .timeline-content::after {
-                left: -30px;
-                right: auto;
-                width: 30px;
-            }
-        }
-
-        /* ── Responsive: mobile ──────────────────────────────────────────── */
-        @media (max-width: 600px) {
-            .memory-timeline::before {
-                left: 14px;
-                transform: none;
-            }
-
-            .timeline-marker {
-                left: 14px;
-                transform: translateX(-50%);
-                width: 20px;
-                height: 20px;
-            }
-
-            .timeline-content {
-                width: calc(100% - 40px);
-                margin-left: 40px !important;
-                margin-right: 0 !important;
-                text-align: left !important;
-                padding: 20px;
-            }
-
-            .timeline-entry:nth-child(odd) .timeline-content::after,
-            .timeline-entry:nth-child(even) .timeline-content::after {
-                left: -26px;
-                right: auto;
-                width: 26px;
-            }
         }
 
         /* Instagram Story Styles */
@@ -3476,59 +3264,41 @@ Səninlə olanda hər şey daha asan görünürdü. Elə bil həyatın bütün �
                 <!-- Dynamic Supabase photos will be rendered here -->
                 <div id="supabaseGallery"></div>
 
-                <!-- Existing static photos — Memory Timeline View -->
-                <div class="memory-timeline">
-
-                    <!-- Timeline Entry 1: 16 fevral 2026 -->
-                    <div class="timeline-entry">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-date">16 fevral 2026</h3>
-                            <p class="timeline-description">Xəzərdə sevgi anları ❤️</p>
-                            <span class="timeline-photo-count">📸 3 foto</span>
-                            <div class="photo-grid-wrapper">
-                                <div class="photo-grid">
-                                    <div class="photo-item">
-                                        <img src="images/photo/14feb1.jpg" alt="Memory 1" class="gallery-img">
-                                        <p class="photo-caption">"Sənin bu gülüşünə görə hərşeyi edərəm, sevirəm səni."</p>
-                                    </div>
-                                    <div class="photo-item">
-                                        <img src="images/photo/14feb2.jpg" alt="Memory 2" class="gallery-img">
-                                        <p class="photo-caption">"İçəridə o qədər baxmalı şeylər var idi ki, şəkil çəkmək yadımıza düşmədi. Yaxşı ki, bunu çəkmişik."</p>
-                                    </div>
-                                    <div class="photo-item">
-                                        <img src="images/photo/14feb3.jpg" alt="Memory 3" class="gallery-img">
-                                        <p class="photo-caption">"Planşet yaxşıdır, kamera da pis deyil... Amma sevgilim idealdır."</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Existing static photos -->
+		<div class="photo-container">
+                <p class="photo-date-label">16 fevral 2026</p>
+                <div class="photo-grid-wrapper">
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="images/photo/14feb1.jpg" alt="Memory 1" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                        <p class="photo-caption">"Sənin bu gülüşünə görə hərşeyi edərəm, sevirəm səni."</p>
                     </div>
-
-                    <!-- Timeline Entry 2: 07 mart 2026 -->
-                    <div class="timeline-entry">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-date">07 mart 2026</h3>
-                            <p class="timeline-description">Xəzər Balıq Evi 🐟</p>
-                            <span class="timeline-photo-count">📸 3 foto</span>
-                            <div class="photo-grid-wrapper">
-                                <div class="photo-grid">
-                                    <div class="photo-item">
-                                        <img src="images/photo/2026-03-07-Xezerbaliqevi-1.jpg" alt="Xəzər Balıqevi 1" class="gallery-img">
-                                    </div>
-                                    <div class="photo-item">
-                                        <img src="images/photo/2026-03-07-Xezerbaliqevi-2.jpg" alt="Xəzər Balıqevi 2" class="gallery-img">
-                                    </div>
-                                    <div class="photo-item">
-                                        <img src="images/photo/2026-03-07-Xezerbaliqevi-3.jpg" alt="Xəzər Balıqevi 3" class="gallery-img">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="photo-item">
+                        <img src="images/photo/14feb2.jpg" alt="Memory 2" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                        <p class="photo-caption">"İçəridə o qədər baxmalı şeylər var idi ki, şəkil çəkmək yadımıza düşmədi. Yaxşı ki, bunu çəkmişik."
+                        </p>
                     </div>
+                    <div class="photo-item">
+                        <img src="images/photo/14feb3.jpg" alt="Memory 3" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                        <p class="photo-caption">"Planşet yaxşıdır, kamera da pis deyil... Amma sevgilim idealdır."</p>
+                    </div>
+                </div>
+                </div>
 
-                </div><!-- /.memory-timeline -->
+                <p class="photo-date-label">07 mart 2026</p>
+                <div class="photo-grid-wrapper">
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="images/photo/2026-03-07-Xezerbaliqevi-1.jpg" alt="Xəzər Balıqevi 1" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/photo/2026-03-07-Xezerbaliqevi-2.jpg" alt="Xəzər Balıqevi 2" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/photo/2026-03-07-Xezerbaliqevi-3.jpg" alt="Xəzər Balıqevi 3" class="gallery-img" style="width: 100%; height: 250px; border-radius: 14px; object-fit: contain; margin-bottom: 15px; cursor: pointer;">
+                    </div>
+                </div>
+                </div>
 
                 <!-- Add photo button -->
                 <div style="text-align: center; margin-top: 40px;">
